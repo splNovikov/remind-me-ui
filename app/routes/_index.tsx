@@ -1,6 +1,8 @@
-// todo: (pavelN) it should've been working like: "import { type MetaFunction }". But hmr stops working instead
-// eslint-disable-next-line import/consistent-type-specifier-style
-import type { MetaFunction } from '@remix-run/node';
+import {
+	json,
+	type LoaderFunctionArgs,
+	type MetaFunction,
+} from '@remix-run/node';
 
 export const meta: MetaFunction = () => {
 	return [
@@ -8,6 +10,11 @@ export const meta: MetaFunction = () => {
 		{ name: 'description', content: 'Welcome to Remind-me!' },
 	];
 };
+
+export async function loader({ request }: LoaderFunctionArgs) {
+	// todo: here is User validation magic should happen
+	return json({});
+}
 
 export default function Index() {
 	return (
@@ -20,7 +27,7 @@ export default function Index() {
 						href="https://remix.run/tutorials/blog"
 						rel="noreferrer"
 					>
-						15m Quickstart Blog Tutorial!!!
+						15m Quickstart Blog Tutorial!
 					</a>
 				</li>
 				<li>
