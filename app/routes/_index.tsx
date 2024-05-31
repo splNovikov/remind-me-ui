@@ -1,3 +1,5 @@
+// todo: (pavelN) it should've been working like: "import { type MetaFunction }". But hmr stops working instead
+// eslint-disable-next-line import/consistent-type-specifier-style
 import type { MetaFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => {
@@ -18,7 +20,7 @@ export default function Index() {
 						href="https://remix.run/tutorials/blog"
 						rel="noreferrer"
 					>
-						15m Quickstart Blog Tutorial
+						15m Quickstart Blog Tutorial!!!
 					</a>
 				</li>
 				<li>

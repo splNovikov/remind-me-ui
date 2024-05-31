@@ -6,7 +6,6 @@ export default [
 	{
 		rules: {
 			semi: 'error',
-			'import/consistent-type-specifier-style': 'off',
 		},
 	},
 ];
