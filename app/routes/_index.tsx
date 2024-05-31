@@ -1,21 +1,3 @@
-import {
-	json,
-	type LoaderFunctionArgs,
-	type MetaFunction,
-} from '@remix-run/node';
-
-export const meta: MetaFunction = () => {
-	return [
-		{ title: 'Remind-me' },
-		{ name: 'description', content: 'Welcome to Remind-me!' },
-	];
-};
-
-export async function loader({ request }: LoaderFunctionArgs) {
-	// todo: here is User validation magic should happen
-	return json({});
-}
-
 export default function Index() {
 	return (
 		<div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
