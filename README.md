@@ -1,6 +1,10 @@
-# Welcome to Remix + Vite!
-
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
+## Todo
+- organize imports
+- linters
+- styles
+- graphana, etc...
+- COMMIT MESSAGE
+- what else?
 
 ## Development
 
