@@ -1,6 +1,4 @@
 ## Todo
-
-- organize imports
 - styles
 - graphana, etc...
 - COMMIT MESSAGE

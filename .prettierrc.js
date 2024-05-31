@@ -4,4 +4,5 @@ import defaultConfig from '@epic-web/config/prettier';
 export default {
 	...defaultConfig,
 	semi: true,
+	plugins: ['prettier-plugin-organize-imports'],
 };
