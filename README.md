@@ -1,8 +1,10 @@
 ## Todo
 
-- styles
 - graphana, etc...
-- COMMIT MESSAGE
+- COMMIT MESSAGE, prevent push with incorrect commit message
+- husky
+- tests
+- docker, github actions, deployment
 - what else?
 
 ## Development

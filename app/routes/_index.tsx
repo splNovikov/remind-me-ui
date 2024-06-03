@@ -1,7 +1,14 @@
+import { Link } from '@remix-run/react';
+
+import { Button } from '#/shared/ui/button';
+
 export default function Index() {
 	return (
-		<div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
+		<div>
 			<h1>Welcome to Remind-me</h1>
+			<Button variant="default" size="lg">
+				<Link to="/login">Log In</Link>
+			</Button>
 			<ul>
 				<li>
 					<a

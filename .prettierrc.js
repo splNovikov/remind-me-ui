@@ -4,5 +4,8 @@ import defaultConfig from '@epic-web/config/prettier';
 export default {
 	...defaultConfig,
 	semi: true,
-	plugins: ['prettier-plugin-organize-imports'],
+
+	plugins: ['@trivago/prettier-plugin-sort-imports'],
+	importOrder: ['<THIRD_PARTY_MODULES>', '^(#/app|#/shared)(/.*)$', '^[./]'],
+	importOrderSeparation: true,
 };
