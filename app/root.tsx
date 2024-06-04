@@ -24,6 +24,7 @@ import { getHints } from '#/shared/lib/client-hints.tsx';
 import { honeypot } from '#/shared/lib/honeypot.server.ts';
 import { getTheme, type Theme } from '#/shared/lib/theme.server.ts';
 import tailwindStyleSheetUrl from '#/shared/styles/tailwind.css?url';
+import { GeneralErrorBoundary } from '#/shared/ui/general-error-boundary';
 
 export const links: LinksFunction = () => {
 	return [
@@ -209,9 +210,7 @@ export function ErrorBoundary() {
 		// todo: pavelN nonce
 		// <Document nonce={nonce}>
 		<Document>
-			{/*// todo: pavelN*/}
-			GeneralErrorBoundary
-			{/*<GeneralErrorBoundary />*/}
+			<GeneralErrorBoundary />
 		</Document>
 	);
 }
