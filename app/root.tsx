@@ -20,8 +20,9 @@ import {
 	ThemeSwitch,
 	useTheme,
 } from '#/app/routes/resources+/theme-switch.tsx';
-import { getHints } from '#/shared/lib/client-hints.tsx';
+import { ClientHintCheck, getHints } from '#/shared/lib/client-hints.tsx';
 import { honeypot } from '#/shared/lib/honeypot.server.ts';
+import { useNonce } from '#/shared/lib/nonce-provider.ts';
 import { getTheme, type Theme } from '#/shared/lib/theme.server.ts';
 import tailwindStyleSheetUrl from '#/shared/styles/tailwind.css?url';
 import { GeneralErrorBoundary } from '#/shared/ui/general-error-boundary';
@@ -76,13 +77,13 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 function Document({
 	children,
-	// nonce,
+	nonce,
 	theme = 'light',
 	env = {},
 	allowIndexing = true,
 }: {
 	children: React.ReactNode;
-	// nonce: string;
+	nonce: string;
 	theme?: Theme;
 	env?: Record<string, string>;
 	allowIndexing?: boolean;
@@ -90,8 +91,7 @@ function Document({
 	return (
 		<html lang="en" className={`${theme} h-full overflow-x-hidden`}>
 			<head>
-				{/*// todo (pavel):*/}
-				{/*<ClientHintCheck nonce={nonce} />*/}
+				<ClientHintCheck nonce={nonce} />
 				<Meta />
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -103,16 +103,13 @@ function Document({
 			<body className="bg-background text-foreground">
 				{children}
 				<script
-					// todo (pavelN):
-					// nonce={nonce}
+					nonce={nonce}
 					dangerouslySetInnerHTML={{
 						__html: `window.ENV = ${JSON.stringify(env)}`,
 					}}
 				/>
-				{/*<ScrollRestoration nonce={nonce} />*/}
-				{/*<Scripts nonce={nonce} />*/}
-				<ScrollRestoration />
-				<Scripts />
+				<ScrollRestoration nonce={nonce} />
+				<Scripts nonce={nonce} />
 			</body>
 		</html>
 	);
@@ -120,8 +117,7 @@ function Document({
 
 function App() {
 	const data = useLoaderData<typeof loader>();
-	// todo: (pavelN)
-	// const nonce = useNonce();
+	const nonce = useNonce();
 	// const user = useOptionalUser();
 	const theme = useTheme();
 	const matches = useMatches();
@@ -133,8 +129,7 @@ function App() {
 
 	return (
 		<Document
-			// todo pavelN
-			// nonce={nonce}
+			nonce={nonce}
 			theme={theme}
 			// todo pavelN
 			// allowIndexing={allowIndexing}
@@ -195,8 +190,7 @@ export default withSentry(AppWithProviders);
 
 export function ErrorBoundary() {
 	// the nonce doesn't rely on the loader so we can access that
-	// todo: pavelN nonce
-	// const nonce = useNonce()
+	const nonce = useNonce();
 
 	// NOTE: you cannot use useLoaderData in an ErrorBoundary because the loader
 	// likely failed to run so we have to do the best we can.
@@ -207,9 +201,7 @@ export function ErrorBoundary() {
 	// to give the user a better UX.
 
 	return (
-		// todo: pavelN nonce
-		// <Document nonce={nonce}>
-		<Document>
+		<Document nonce={nonce}>
 			<GeneralErrorBoundary />
 		</Document>
 	);
