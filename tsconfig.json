@@ -4,7 +4,7 @@
 	"compilerOptions": {
 		"paths": {
 			"#/app/*": ["./app/*"],
-			"#/shared/*": ["./shared/*"],
+			"#/shared/*": ["./app/shared/*"],
 			"#/tests/*": ["./tests/*"]
 		}
 	}
