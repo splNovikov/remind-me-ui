@@ -6,7 +6,7 @@ import { marketingPreset } from './app/routes/_marketing+/tailwind-preset';
 import { extendedTheme } from './app/shared/lib/extended-theme.ts';
 
 export default {
-	content: ['./app/**/*.{ts,tsx}'],
+	content: ['./app/**/*.{ts,tsx,jsx,js}'],
 	darkMode: 'class',
 	theme: {
 		container: {
